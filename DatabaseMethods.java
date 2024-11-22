@@ -7,4 +7,20 @@ public class DatabaseMethods {
     public int generateID(){
 
     }
+
+    public void modifyID(int iD) {
+
+    }//end modify method
+
+    public void preOrder() {
+
+    }//end preOrder method
+
+    public void inOrder() {
+
+    }//end inOrder method
+
+    public void postOrder() {
+
+    }//end postOrder method
 }
