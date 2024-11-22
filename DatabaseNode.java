@@ -1,7 +1,7 @@
 //object class
 public class DatabaseNode {
     //instance variables
-    private int idNum;
+    private int idNum; //9 digit
     //pointing to left and right
     DatabaseNode left;
     DatabaseNode right;
