@@ -2,7 +2,7 @@
 public class AlizaMethods {
     DatabaseNode root; //top of tree
 
-    //constructor: will change later
+    //constructor: will change name later when adding to methods class
     public AlizaMethods() {
         this.root = null;
     }//end constructor
