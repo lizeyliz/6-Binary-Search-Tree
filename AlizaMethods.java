@@ -1,5 +1,7 @@
 //https://liveexample.pearsoncmg.com/dsanimation13ejava/BSTeBook.html
 //Chat GPT
+
+//Extra credit: iteration
 public class AlizaMethods {
     DatabaseNode root; //top of tree
 
@@ -41,6 +43,19 @@ public class AlizaMethods {
             }//end outer if/else
         }//end while loop
     }//end add method
+
+    //print binary search tree using preorder
+    public void preorder () {
+        DatabaseNode current = root;
+        if (root == null) { //might have issues with root value
+            System.out.println("Tree is empty");
+            return; //end method here
+        }
+        //traverse left side
+        
+
+
+        }
 }//end class AlizaMethods
 
 //To do:
