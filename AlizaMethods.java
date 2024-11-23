@@ -1,3 +1,4 @@
+//https://liveexample.pearsoncmg.com/dsanimation13ejava/BSTeBook.html
 public class AlizaMethods {
     DatabaseNode root; //top of tree
 
@@ -5,6 +6,33 @@ public class AlizaMethods {
     public AlizaMethods() {
         this.root = null;
     }//end constructor
+
+    //use variable called key?
+    public void add(DatabaseNode newNode) {
+        DatabaseNode current = root;
+        boolean placed = false;
+        while(placed == false){
+            if(root == null) {
+                root = newNode;
+                placed = true;
+            } else if (newNode.getID() < root.getID()) {
+                if(current.left == null) {
+                    current.left = newNode;
+                    placed = true;
+                } else {
+                    //move to next node to the left
+                    current = current.left;
+                }
+            } else if (newNode.getID() > root.getID()) {
+                if(current.right  == null) {
+                    current.right = newNode;
+                    placed = true;
+                } else {
+                    current = current.right;
+                }
+            }//end outer if/else
+        }//end while loop
+    }
 
     //from textbook
     /*public void add (int value) {
