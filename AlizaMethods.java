@@ -45,17 +45,36 @@ public class AlizaMethods {
     }//end add method
 
     //print binary search tree using preorder
+    //display as an array or linkedlist? mb not neccessary
+    //will change get ID to toString method later?
     public void preorder () {
+        //1) print root
         DatabaseNode current = root;
+        //if empty
         if (root == null) { //might have issues with root value
             System.out.println("Tree is empty");
             return; //end method here
+        } else {
+            System.out.println(current.getID());
         }
-        //traverse left side
-        
+        //2) traverse and print left side
+        while(current.left != null) {
+            System.out.println(current.left.getID());
+            if (current.left.left != null) {
+                current = current.left;
+            }
+        } 
+        //go back to parent node when finished
+        //3) traverse and print right side
+        while(current.right != null) {
+            System.out.println(current.right.getID());
+            if (current.right.right != null) {
+                current = current.right;
+            }
+        }
 
 
-        }
+        }//end method preorder
 }//end class AlizaMethods
 
 //To do:
