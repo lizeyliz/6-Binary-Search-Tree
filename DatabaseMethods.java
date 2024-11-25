@@ -2,7 +2,6 @@ public class DatabaseMethods {
 
     DatabaseNode root; //top of tree
 
-    //constructor: will change name later when adding to methods class
     public DatabaseMethods() {
         this.root = null;
     }//end constructor
@@ -46,6 +45,22 @@ public class DatabaseMethods {
     /*public int generateID(){
 
     }*/
+
+    //pre-order recursive from geeksforgeeks 
+    //https://www.geeksforgeeks.org/binary-search-tree-traversal-inorder-preorder-post-order/ 
+    public static void printPreorder(DatabaseNode node) {
+    if (node == null)
+      return;
+
+    // Visit node
+    System.out.print(node.getID() + " ");
+
+    // Traverse left subtree
+    printPreorder(node.left);
+
+    // Traverse right subtree
+    printPreorder(node.right);
+  }
 
     public void modifyID(int iD) {
 

@@ -2,6 +2,7 @@
 //Chat GPT
 
 //Extra credit: iteration
+
 public class AlizaMethods {
     DatabaseNode root; //top of tree
 
@@ -47,7 +48,8 @@ public class AlizaMethods {
     //print binary search tree using preorder
     //display as an array or linkedlist? mb not neccessary
     //will change get ID to toString method later?
-    public void preorder () {
+    // 1)Root 2) left subtree 3) right subtree
+    /*public void preorder () {
         //1) print root
         DatabaseNode current = root;
         //if empty
@@ -72,9 +74,24 @@ public class AlizaMethods {
                 current = current.right;
             }
         }
-    }//end method preorder
+    }//end method preorder*/
 
-    
+    //pre-order recursive from geeksforgeeks 
+    //https://www.geeksforgeeks.org/binary-search-tree-traversal-inorder-preorder-post-order/ 
+    public static void printPreorder(DatabaseNode node)
+  {
+    if (node == null)
+      return;
+
+    // Visit node
+    System.out.print(node.getID() + " ");
+
+    // Traverse left subtree
+    printPreorder(node.left);
+
+    // Traverse right subtree
+    printPreorder(node.right);
+  }
 }//end class AlizaMethods
 
 //To do:
