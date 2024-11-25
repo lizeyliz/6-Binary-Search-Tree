@@ -48,9 +48,10 @@ public class DatabaseMethods {
 
     //pre-order recursive from geeksforgeeks 
     //https://www.geeksforgeeks.org/binary-search-tree-traversal-inorder-preorder-post-order/ 
+    //use stack for iterative version?
     public static void printPreorder(DatabaseNode node) {
     if (node == null)
-      return;
+      return;//base case
 
     // Visit node
     System.out.print(node.getID() + " ");

@@ -41,24 +41,6 @@ public class AlizaMethods {
             }
         }
     }//end method preorder*/
-
-    //pre-order recursive from geeksforgeeks 
-    //https://www.geeksforgeeks.org/binary-search-tree-traversal-inorder-preorder-post-order/ 
-    public static void printPreorder(DatabaseNode node)
-  {
-    if (node == null)
-      return;
-
-    // Visit node
-    System.out.print(node.getID() + " ");
-
-    // Traverse left subtree
-    printPreorder(node.left);
-
-    // Traverse right subtree
-    printPreorder(node.right);
-  }
-}//end class AlizaMethods
-
+}
 //To do:
 //-Add exception handling for duplicates
