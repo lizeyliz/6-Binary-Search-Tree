@@ -72,9 +72,9 @@ public class AlizaMethods {
                 current = current.right;
             }
         }
+    }//end method preorder
 
-
-        }//end method preorder
+    
 }//end class AlizaMethods
 
 //To do:

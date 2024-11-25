@@ -2,10 +2,12 @@ import java.util.Scanner;
 
 public class DatabaseTest {
     public static void main(String[] args) {
+
+        DatabaseMethods database = new DatabaseMethods();
       
         Scanner scanner = new Scanner(System.in);
 
-        while (true) {
+        /*while (true) {
             System.out.println("Menu:");
             System.out.println("1. Add");
             System.out.println("2. Delete");
@@ -48,6 +50,17 @@ public class DatabaseTest {
                 default:
                     System.out.println("Invalid choice. Please try again.");
             } // end Switch/Case
-        } // end While loop
+        } // end While loop*/
+
+        //hardcoding in adds
+        DatabaseNode node1 = new DatabaseNode(50);
+        DatabaseNode node2 = new DatabaseNode(25);
+        DatabaseNode node3 = new DatabaseNode(35);
+        DatabaseNode node4 = new DatabaseNode(80);
+
+        database.add(node1);
+        database.add(node2);
+        database.add(node3);
+        database.add(node4);
     } // end public
 }  // end Test Class file
