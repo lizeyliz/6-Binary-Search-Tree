@@ -31,7 +31,12 @@ public class DatabaseTest {
                     // modify method
                     break;
                 case 4:
-                    // lookup method
+                    System.out.print("Enter ID number to lookup: ");
+                    idNum = scanner.nextInt();
+                    scanner.nextLine(); // to get next line
+                    System.out.print("Pick order (preorder, inorder, postorder): ");
+                    String order = scanner.nextLine();
+                    // lookup(idNum, order);  Not sure about this.
                     break;
                 case 5:
                     //System.out.println("Number of records: " + DatabaseMethods.countRecords());
