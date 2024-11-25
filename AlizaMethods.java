@@ -11,40 +11,6 @@ public class AlizaMethods {
         this.root = null;
     }//end constructor
 
-    //add a node to the binary search tree
-    public void add(DatabaseNode newNode) {
-        //if tree is empty
-        if(root == null) {
-            root = newNode;
-            return; //end method here if root == null
-        }//end if statement
-
-        //starting from the top
-        DatabaseNode current = root;
-        //while loop for placement if tree is not empty
-        while(true){ //loops until break is called
-            if (newNode.getID() < current.getID()) {
-                if(current.left == null) {
-                    current.left = newNode; //insert to the left
-                    break;
-                } else {
-                    current = current.left; //move to next node to the left
-                }//end inner if/else 1
-            } else if (newNode.getID() > current.getID()) {
-                if(current.right  == null) {
-                    current.right = newNode; //insert to the right
-                    break;
-                } else {
-                    current = current.right; //move to next node to the right
-                }//end inner if/else 2
-            } else { //if newNode is equal to current
-                //add exception handling here
-                System.out.println("Node is a duplicate and cannot be placed.");
-                break;
-            }//end outer if/else
-        }//end while loop
-    }//end add method
-
     //print binary search tree using preorder
     //display as an array or linkedlist? mb not neccessary
     //will change get ID to toString method later?
