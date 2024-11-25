@@ -68,6 +68,7 @@ public class DatabaseTest {
         database.printPreorder(node1);
 
         //print in order
+        System.out.println();
         System.out.println("In Order Traversal");
         database.printInOrder(node1);
 
