@@ -1,5 +1,6 @@
 public class RoMethods {
-// a method to delete records
+
+    // a method to delete records
     private DatabaseNode root;
 
     // Method to delete a node
@@ -48,5 +49,19 @@ public class RoMethods {
         root = deleteNode(root, idNum);
     }
 
-    // Add additional methods for managing the tree if needed (e.g., insert, search, etc.)
+// in-order traversal. Values in sorted order.
+
+public static void printInOrder (DatabaseNode node) {
+    if (node == null)
+    return;
+
+    //left tree
+    printInOrder(node.left);
+    System.out.print(node.idNum + " ");
+
+    //right tree
+    printInOrder(node.right);
+}
+
+
 }
