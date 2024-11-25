@@ -22,7 +22,10 @@ public class DatabaseTest {
                     // add method
                     break;
                 case 2:
-                    // delete method
+                    System.out.print("Enter ID number of record you want delete: ");
+                    idNum = scanner.nextInt();
+                    DatabaseNode.deleteNode(idNum);
+                    System.out.println("Record deleted sucessfully.");
                     break;
                 case 3:
                     // modify method
