@@ -62,5 +62,9 @@ public class DatabaseTest {
         database.add(node2);
         database.add(node3);
         database.add(node4);
+
+        //print in preorder
+        System.out.println("Pre-order traversal");
+        database.printPreorder(node1);
     } // end public
 }  // end Test Class file
