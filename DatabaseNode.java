@@ -1,5 +1,6 @@
 //object class
 public class DatabaseNode {
+    
     //instance variables
     private int idNum; //9 digit
     //private String firstName;
