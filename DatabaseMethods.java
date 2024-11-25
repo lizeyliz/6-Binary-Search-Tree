@@ -70,8 +70,16 @@ public class DatabaseMethods {
 
     }//end preOrder method
 
-    public void inOrder() {
-
+    public void printInOrder (DatabaseNode node) {
+        if (node == null)
+        return;
+    
+        //left tree
+        printInOrder(node.left);
+        System.out.print(node.getID() + " ");
+    
+        //right tree
+        printInOrder(node.right);
     }//end inOrder method
 
     public void postOrder() {

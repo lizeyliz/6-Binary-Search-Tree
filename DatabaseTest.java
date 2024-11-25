@@ -66,5 +66,10 @@ public class DatabaseTest {
         //print in preorder
         System.out.println("Pre-order traversal");
         database.printPreorder(node1);
+
+        //print in order
+        System.out.println("In Order Traversal");
+        database.printInOrder(node1);
+
     } // end public
 }  // end Test Class file

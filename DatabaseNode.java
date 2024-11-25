@@ -19,6 +19,8 @@ public class DatabaseNode {
     //constructor
     public DatabaseNode(int idNum){
         this.idNum = idNum;
+       // this.left = null;
+       // this.right = null;
     }//end constructor
 
     public int getID(){
