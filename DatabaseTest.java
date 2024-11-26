@@ -7,7 +7,7 @@ public class DatabaseTest {
       
         Scanner scanner = new Scanner(System.in);
 
-        /*while (true) {
+        while (true) {
             System.out.println("Menu:");
             System.out.println("1. Add");
             System.out.println("2. Delete");
@@ -21,13 +21,17 @@ public class DatabaseTest {
 
             switch (choice) {
                 case 1:
-                    // add method
+                    System.out.print("Enter ID number: ");
+                    int idNum = scanner.nextInt();
+                    DatabaseNode newNode = new DatabaseNode(idNum);
+                    database.add(newNode);
+                    System.out.println("Record added successfully.");
                     break;
                 case 2:
-                    System.out.print("Enter ID number of record you want delete: ");
+                    System.out.print("Enter ID number of record you want to delete: ");
                     idNum = scanner.nextInt();
-                    DatabaseNode.deleteNode(idNum);
-                    System.out.println("Record deleted sucessfully.");
+                    database.delete(idNum);
+                    System.out.println("Record deleted successfully.");
                     break;
                 case 3:
                     // modify method
@@ -36,9 +40,9 @@ public class DatabaseTest {
                     System.out.print("Enter ID number to lookup: ");
                     idNum = scanner.nextInt();
                     scanner.nextLine(); // to get next line
-                    System.out.print("Pick order (preorder, inorder, postorder): ");
+                    System.out.print("Pick order (preorder, inorder): ");
                     String order = scanner.nextLine();
-                    // lookup(idNum, order);  Not sure about this.
+                    database.lookup(database, order);
                     break;
                 case 5:
                     //System.out.println("Number of records: " + DatabaseMethods.countRecords());
@@ -50,10 +54,10 @@ public class DatabaseTest {
                 default:
                     System.out.println("Invalid choice. Please try again.");
             } // end Switch/Case
-        } // end While loop*/
+        } // end While loop 
 
         //hardcoding in adds
-        DatabaseNode node1 = new DatabaseNode(50);
+        /*DatabaseNode node1 = new DatabaseNode(50);
         DatabaseNode node2 = new DatabaseNode(25);
         DatabaseNode node3 = new DatabaseNode(35);
         DatabaseNode node4 = new DatabaseNode(80);
@@ -61,16 +65,19 @@ public class DatabaseTest {
         database.add(node1);
         database.add(node2);
         database.add(node3);
-        database.add(node4);
+        database.add(node4);*/
 
         //print in preorder
-        System.out.println("Pre-order traversal");
-        database.printPreorder(node1);
+        //System.out.println("Pre-order traversal");
+        //database.printPreorder(node1);
+
+        //System.out.println();
 
         //print in order
-        System.out.println();
-        System.out.println("In Order Traversal");
-        database.printInOrder(node1);
+        //System.out.println("In Order Traversal");
+        //database.printInOrder(node1);
 
     } // end public
+
+    
 }  // end Test Class file

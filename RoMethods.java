@@ -1,23 +1,7 @@
 public class RoMethods {
 
-    private DatabaseNode root;
 
-    public RoMethods() {
-        this.root = null;  // Initially, the tree is empty
-    }
     
-   /*  public void printInOrder (DatabaseNode node) {
-        if (node == null)
-        return;
-    
-        //left tree
-        printInOrder(node.left);
-        System.out.print(node.getID() + " ");
-    
-        //right tree
-        printInOrder(node.right);
-    } */
-
     // Method to delete a node
     public DatabaseNode deleteNode(DatabaseNode root, int idNum) {
         // Base case: if the tree is empty
@@ -60,12 +44,7 @@ public class RoMethods {
     }
 
     // Wrapper method to initiate deletion from the root
-    public void delete(int idNum) {
-        root = deleteNode(root, idNum);
-    }
-
-// in-order traversal. Values in sorted order.
-
-
-
+   // public void delete(int idNum) {
+   //     root = deleteNode(root, idNum);
+   // }
 }
