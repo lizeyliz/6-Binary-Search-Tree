@@ -1,8 +1,10 @@
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class DatabaseMethods {
 
     DatabaseNode root; // top of tree
+    ArrayList<Integer> listIDs = new ArrayList<>(); //stores all IDs
 
     public DatabaseMethods() {
         this.root = null;
@@ -44,15 +46,16 @@ public class DatabaseMethods {
 
     // generate random id number for extra credit (make sure there are no multiples)
     // hard code for now
-    /*
-     * public int generateID(){
-     * int idNum = 0;
-     * //generate random number
-     * idNum = (int)(Math.random() * 1000000000);
-     * return idNum;
-     * 
-     * }
-     */
+    public int generateID(){
+        int idNum = 0;
+        //generate random number
+        idNum = (int)(Math.random() * 1000000000);
+        //check that idNum is unique
+        while (listIDs.contains(idNum)) {
+            idNum = (int)(Math.random() * 1000000000);
+        }
+        return idNum;
+    }//end generateID method
 
     // print pre-order using iteration and stack
     public void printPreorder(DatabaseNode root) {
