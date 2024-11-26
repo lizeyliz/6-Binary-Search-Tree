@@ -34,4 +34,15 @@ public class AbbyMethods {
             }//end outer while loop
         }//end it/else statement
     }//end preOrder method
+
+    public void postOrderRecursion(DatabaseNode node) {
+        if (node == null) {
+            return;
+        }
+        postOrderRecursion(node.left);
+
+        postOrderRecursion(node.right);
+
+        System.out.print(node.getID() + " ");
+    }//end postOrder_recusrion method
 }//end class
