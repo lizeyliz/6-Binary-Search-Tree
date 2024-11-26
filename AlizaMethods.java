@@ -38,4 +38,20 @@ public class AlizaMethods {
             }
         }//end while loop
     }//end printPostOrder
+
+    public DatabaseNode search(int idNum, DatabaseNode root) {
+        //start at root
+        DatabaseNode current = root;
+        //traverse tree until correct number of null is found
+        while(current != null) {
+            if(idNum < current.getID()) {
+                current = current.left;
+            } else if(idNum > current.getID()) {
+                current = current.right;
+            } else if (idNum == current.getID()) {
+                return current;
+            }//end if/else
+        }//end while loop
+        return null; //if not found
+    }//end search
 }//end AlizaMethods
