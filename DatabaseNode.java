@@ -30,4 +30,8 @@ public class DatabaseNode {
     public void setID(int newID) {
         this.idNum = newID;
     }//endsetID
+
+    public String toString() {
+        return Integer.toString(getID());
+    }
 }//end class DatabaseNode
