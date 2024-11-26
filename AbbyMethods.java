@@ -1,7 +1,9 @@
 import java.util.Stack;
+import java.util.ArrayList;
 
 public class AbbyMethods {
     DatabaseNode root; //top of tree
+    ArrayList<Integer> listIDs = new ArrayList<>();
 
     public void postOrder() {
         if (root == null) {
@@ -44,4 +46,18 @@ public class AbbyMethods {
 
         System.out.print(node.getID() + " ");
     }//end postOrder_recusrion method
+
+    // generate random id number for extra credit (make sure there are no multiples)
+    // hard code for now
+    public int generateID(){
+    int idNum = 0;
+    //generate random number
+    idNum = (int)(Math.random() * 1000000000);
+    //check that idNum is unique
+    while (listIDs.contains(idNum)) {
+        idNum = (int)(Math.random() * 1000000000);
+    }
+    return idNum;
+    }//end generateID method
+    
 }//end class
