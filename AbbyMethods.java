@@ -2,8 +2,7 @@ import java.util.Stack;
 
 public class AbbyMethods {
     DatabaseNode root; //top of tree
-    
-    //start at root, print all left nodes then backtrack and print right
+
     public void postOrder() {
         if (root == null) {
             System.out.println("Empty Database");
@@ -33,7 +32,7 @@ public class AbbyMethods {
                 check = false;
             }//end outer while loop
         }//end it/else statement
-    }//end preOrder method
+    }//end postOrder method
 
     public void postOrderRecursion(DatabaseNode node) {
         if (node == null) {
