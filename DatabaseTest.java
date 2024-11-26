@@ -17,40 +17,21 @@ public class DatabaseTest {
             System.out.println("6. Exit");
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
+            
             scanner.nextLine(); // Consume newline
 
             switch (choice) {
-                case 1:
-                    System.out.print("Enter ID number: ");
-                    int idNum = scanner.nextInt();
-                    DatabaseNode newNode = new DatabaseNode(idNum);
-                    database.add(newNode);
-                    System.out.println("Record added successfully.");
+                case 1:  // ADD method
+                    database.addNode();
                     break;
-                case 2:
-                    System.out.print("Enter ID number of record you want to delete: ");
-                    idNum = scanner.nextInt();
-                    database.delete(idNum);
-                    System.out.println("Record deleted successfully.");
+                case 2: // DELETE method
+                    database.deleteNode();
                     break;
-                case 3:
-                    // modify method
-                    System.out.print("Enter ID number of record you want to modify: ");
-                    idNum = scanner.nextInt();
-                    scanner.nextLine(); // to get next line
-                    System.out.print("Enter new ID number: ");
-                    int newID = scanner.nextInt();
-                    scanner.nextLine(); // to get next line
-                    database.modify(idNum, newID);
-                    System.out.println("Record modified successfully.");
+                case 3: // MODIFY method
+                    database.modifyNode();
                     break;
-                case 4:
-                    System.out.print("Enter ID number to lookup: ");
-                    idNum = scanner.nextInt();
-                    scanner.nextLine(); // to get next line
-                    System.out.print("Pick order (preorder, inorder): ");
-                    String order = scanner.nextLine();
-                    database.lookup(database, order);
+                case 4: // LOOKUP method
+                    database.lookupNode();
                     break;
                 case 5:
                     //System.out.println("Number of records: " + DatabaseMethods.countRecords());

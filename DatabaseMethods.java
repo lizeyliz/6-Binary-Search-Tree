@@ -1,17 +1,24 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.Stack;
 
 public class DatabaseMethods {
 
     DatabaseNode root; // top of tree
-    ArrayList<Integer> listIDs = new ArrayList<>(); //stores all IDs
+    ArrayList<Integer> listIDs = new ArrayList<>(); // stores all IDs
 
     public DatabaseMethods() {
         this.root = null;
     }// end constructor
 
-    // add a node to the binary search tree
-    public void add(DatabaseNode newNode) {
+    Scanner scanner = new Scanner(System.in);
+
+    // ADD a node to the binary search tree
+    public void addNode() {
+        System.out.print("Enter ID number: ");
+        int idNum = scanner.nextInt();
+        DatabaseNode newNode = new DatabaseNode(idNum);
+
         // if tree is empty
         if (root == null) {
             root = newNode;
@@ -42,37 +49,38 @@ public class DatabaseMethods {
                 break;
             } // end outer if/else
         } // end while loop
-    }// end add method
+        System.out.println("Record added successfully.");
+    }// end of ADD method
 
-    //search BST using id number
+    // search BST using id number
     public DatabaseNode search(int idNum, DatabaseNode root) {
-        //start at root
+        // start at root
         DatabaseNode current = root;
-        //traverse tree until correct number of null is found
-        while(current != null) {
-            if(idNum < current.getID()) {
+        // traverse tree until correct number of null is found
+        while (current != null) {
+            if (idNum < current.getID()) {
                 current = current.left;
-            } else if(idNum > current.getID()) {
+            } else if (idNum > current.getID()) {
                 current = current.right;
             } else if (idNum == current.getID()) {
                 return current;
-            }//end if/else
-        }//end while loop
-        return null; //if not found
-    }//end search
+            } // end if/else
+        } // end while loop
+        return null; // if not found
+    }// end search
 
     // generate random id number for extra credit (make sure there are no multiples)
     // hard code for now
-    public int generateID(){
+    public int generateID() {
         int idNum = 0;
-        //generate random number
-        idNum = (int)(Math.random() * 1000000000);
-        //check that idNum is unique
+        // generate random number
+        idNum = (int) (Math.random() * 1000000000);
+        // check that idNum is unique
         while (listIDs.contains(idNum)) {
-            idNum = (int)(Math.random() * 1000000000);
+            idNum = (int) (Math.random() * 1000000000);
         }
         return idNum;
-    }//end generateID method
+    }// end generateID method
 
     // print pre-order using iteration and stack
     public void printPreorder(DatabaseNode root) {
@@ -119,8 +127,6 @@ public class DatabaseMethods {
      * }
      */
 
-
-
     public void printInOrder(DatabaseNode node) { // INORDER TRAVERSAL
         if (node == null)
             return;
@@ -141,8 +147,8 @@ public class DatabaseMethods {
             DatabaseNode current = root;
             boolean check = true;
 
-            while (true) { //infinite loop until break
-                //go to extreme left
+            while (true) { // infinite loop until break
+                // go to extreme left
                 while (current != null && check) {
                     stack.push(current);
                     current = current.left;
@@ -150,22 +156,29 @@ public class DatabaseMethods {
                 if (stack.empty()) {
                     break;
                 }
-                //to avoid infinite loop
+                // to avoid infinite loop
                 if (current != stack.peek().right) {
                     current = stack.peek().right;
                     check = true;
                     continue;
                 }
-                //if not caught in any above special case
+                // if not caught in any above special case
                 current = stack.pop();
                 System.out.print(current.getID() + " ");
                 check = false;
-            }//end outer while loop
-        }//end it/else statement
+            } // end outer while loop
+        } // end it/else statement
     }// end postOrder method
 
-    public void delete(int idNum) {
+    //public void delete(int idNum) {
+      //  root = deleteNode(root, idNum);
+    //}
+
+    public void deleteNode() {
+        System.out.print("Enter ID number of record you want to delete: ");
+        int idNum = scanner.nextInt();
         root = deleteNode(root, idNum);
+        System.out.println("Record deleted successfully.");
     }
 
     private DatabaseNode deleteNode(DatabaseNode root, int idNum) {
@@ -207,7 +220,16 @@ public class DatabaseMethods {
         return node;
     }
 
-    public void modify (int idNum, int newID) {
+    public void modifyNode(){
+        System.out.print("Enter ID number of record you want to modify: ");
+        int idNum = scanner.nextInt();
+        System.out.print("Enter new ID number: ");
+        int newID = scanner.nextInt();
+        modify(idNum, newID);
+        System.out.println("Record modified successfully.");
+    }
+
+    public void modify(int idNum, int newID) {
         DatabaseNode current = search(idNum, root);
         if (current != null) {
             current.setID(newID);
@@ -216,7 +238,20 @@ public class DatabaseMethods {
         }
     }// end modify method
 
-   
+
+    public void lookupNode() {
+        System.out.print("Enter ID number to lookup: ");
+        int idNum = scanner.nextInt();
+        scanner.nextLine(); // to get next line
+        DatabaseNode node = search(idNum, root);
+        if (node == null) {
+            System.out.println("Record not found.");
+            return;
+        }
+        System.out.print("Enter order (preorder or inorder): ");
+        String order = scanner.nextLine();
+        lookup(this, order);
+    }
 
     public void lookup(DatabaseMethods database, String order) {
         if (order.equalsIgnoreCase("preorder")) {
@@ -229,7 +264,5 @@ public class DatabaseMethods {
         System.out.println();
 
     }
-
-
 
 }
