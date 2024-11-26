@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public class DatabaseMethods {
 
     DatabaseNode root; //top of tree
@@ -45,11 +47,36 @@ public class DatabaseMethods {
     /*public int generateID(){
 
     }*/
+        //print pre-order using iteration and stack
+    public void printPreorder(DatabaseNode root) {
+        if (root == null) { //BST empty
+            return;
+        }//end if 
+        //creating a stack to hold tree values
+        Stack<DatabaseNode> preorder = new Stack<>();
+        //put the root in the stack
+        preorder.push(root);
+
+        while(!preorder.isEmpty()){
+            //remove current node from stack (so no repeats) and print it
+            DatabaseNode current = preorder.pop();
+            System.out.print(current.getID() + " ");
+            //do right subtree first (bc stacks are read opposite way they are added to)
+            if(current.right != null) { 
+                preorder.push(current.right); //adding right side values to stack
+            }//end if statement 
+
+            //left subtree
+            if (current.left != null){
+                preorder.push(current.left);//adding left side values to stack
+            }//end if statement
+        }//end while loop
+    }//end printPreorder
 
     //pre-order recursive from geeksforgeeks 
     //https://www.geeksforgeeks.org/binary-search-tree-traversal-inorder-preorder-post-order/ 
     //use stack for iterative version?
-    public static void printPreorder(DatabaseNode node) {
+    /*public static void printPreorder(DatabaseNode node) {
     if (node == null)
       return;//base case
 
@@ -61,15 +88,11 @@ public class DatabaseMethods {
 
     // Traverse right subtree
     printPreorder(node.right);
-  }
+  }*/
 
     public void modifyID(int iD) {
 
     }//end modify method
-
-    public void preOrder() {
-
-    }//end preOrder method
 
     public void printInOrder (DatabaseNode node) {
         if (node == null)

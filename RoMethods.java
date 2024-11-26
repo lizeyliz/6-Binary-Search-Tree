@@ -2,7 +2,7 @@ public class RoMethods {
 
     private DatabaseNode root;
 
-    public RoMethods {
+    public RoMethods() {
         this.root = null;  // Initially, the tree is empty
     }
     
