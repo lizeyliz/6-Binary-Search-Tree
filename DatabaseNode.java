@@ -18,7 +18,7 @@ public class DatabaseNode {
     
     //constructor
     public DatabaseNode(int idNum){
-        /*this.idNum = idNum;
+        this.idNum = idNum;
         this.firstName = firstName;
         this.lastName = lastName;
         this.addy = addy;
@@ -26,7 +26,7 @@ public class DatabaseNode {
         this.state = state;
         this.zip = zip;
         this.email = email;
-        this.phNum = phNum;*/
+        this.phNum = phNum;
         this.left = null;
         this.right = null;
     }//end constructor
