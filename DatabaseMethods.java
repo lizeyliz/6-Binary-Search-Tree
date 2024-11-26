@@ -119,10 +119,7 @@ public class DatabaseMethods {
      * }
      */
 
-    public void modifyID(int iD) {
 
-
-    }// end modify method
 
     public void printInOrder(DatabaseNode node) { // INORDER TRAVERSAL
         if (node == null)
@@ -210,6 +207,17 @@ public class DatabaseMethods {
         return node;
     }
 
+    public void modify (int idNum, int newID) {
+        DatabaseNode current = search(idNum, root);
+        if (current != null) {
+            current.setID(newID);
+        } else {
+            System.out.println("Record not found.");
+        }
+    }// end modify method
+
+   
+
     public void lookup(DatabaseMethods database, String order) {
         if (order.equalsIgnoreCase("preorder")) {
             database.printPreorder(database.root);
@@ -222,12 +230,6 @@ public class DatabaseMethods {
 
     }
 
-    public void modify(int oldID, int newID) {
 
-        // Implementation of modify method
-
-        // Find the node with oldID and change its ID to newID
-
-    }
 
 }
