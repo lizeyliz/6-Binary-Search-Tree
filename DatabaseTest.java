@@ -41,8 +41,7 @@ public class DatabaseTest {
                     System.out.print("Enter new ID number: ");
                     int newID = scanner.nextInt();
                     scanner.nextLine(); // to get next line
-                    database.1
-                    (idNum, newID);
+                    database.modify(idNum, newID);
                     System.out.println("Record modified successfully.");
                     break;
                 case 4:
