@@ -205,4 +205,12 @@ public class DatabaseMethods {
 
     }
 
+    public void modify(int oldID, int newID) {
+
+        // Implementation of modify method
+
+        // Find the node with oldID and change its ID to newID
+
+    }
+
 }

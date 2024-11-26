@@ -35,6 +35,15 @@ public class DatabaseTest {
                     break;
                 case 3:
                     // modify method
+                    System.out.print("Enter ID number of record you want to modify: ");
+                    idNum = scanner.nextInt();
+                    scanner.nextLine(); // to get next line
+                    System.out.print("Enter new ID number: ");
+                    int newID = scanner.nextInt();
+                    scanner.nextLine(); // to get next line
+                    database.1
+                    (idNum, newID);
+                    System.out.println("Record modified successfully.");
                     break;
                 case 4:
                     System.out.print("Enter ID number to lookup: ");
