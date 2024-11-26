@@ -12,29 +12,24 @@ public class AlizaMethods {
         this.root = null;
     }//end constructor
 
-    //print pre-order using iteration and stack
-    public void printPreorder(DatabaseNode root) {
-        if (root == null) { //BST empty
+    //process left subtree (bottom up), then left subtree, then root
+    public void printPostOrder(DatabaseNode root) {
+        if (root == null) {
             return;
-        }//end if 
-        //creating a stack to hold tree values
-        Stack<DatabaseNode> preorder = new Stack<>();
-        //put the root in the stack
-        preorder.push(root);
+        }
+        //use a stack in opposite order of what you want to do?
+        //add all values to stack in opposite order and then read
+        Stack<DatabaseNode> postorder = new Stack<>();
+        postorder.push(root);
+        while(!postorder.isEmpty()){
+            DatabaseNode current = postorder.peek();
+            //right first
+            if(current.right != null) {
+                postorder.push(current.right);
+            }
 
-        while(!preorder.isEmpty()){
-            //remove current node from stack (so no repeats) and print it
-            DatabaseNode current = preorder.pop();
-            System.out.println(current.getID());
-            //do right subtree first (bc stacks are read opposite way they are added to)
-            if(current.right != null) { 
-                preorder.push(current.right); //adding right side values to stack
-            }//end if statement 
+            
+        }
 
-            //left subtree
-            if (current.left != null){
-                preorder.push(current.left);//adding left side values to stack
-            }//end if statement
-        }//end while loop
-    }//end printPreorder
+    }
 }//end AlizaMethods
