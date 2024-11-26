@@ -19,17 +19,23 @@ public class AlizaMethods {
         }
         //use a stack in opposite order of what you want to do?
         //add all values to stack in opposite order and then read
+        //nope this doesn't work bc we do need to ignore some values
+        //when to pop?
         Stack<DatabaseNode> postorder = new Stack<>();
-        postorder.push(root);
+        //get to leftmost node
+        DatabaseNode current = root;
+        while(current.left != null) {
+            postorder.push(current.left);
+        }
         while(!postorder.isEmpty()){
-            DatabaseNode current = postorder.peek();
+            current = postorder.peek();
             //right first
-            if(current.right != null) {
+            while(current.right != null) {
                 postorder.push(current.right);
             }
-
-            
-        }
-
-    }
+            while(current.left != null) {
+                postorder.push(current.left);
+            }
+        }//end while loop
+    }//end printPostOrder
 }//end AlizaMethods
