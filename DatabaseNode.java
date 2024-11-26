@@ -3,14 +3,14 @@ public class DatabaseNode {
     
     //instance variables
     private int idNum; //9 digit
-    //private String firstName;
-    //private String lastName;
-    //private String addy;
-    //private String city;
-    //private String state;
-    //private int zip5;
-    //private String email;
-    //private String phNum;
+    private String firstName;
+    private String lastName;
+    private String addy;
+    private String city;
+    private String state;
+    private int zip;
+    private String email;
+    private String phNum;
 
     //pointing to left and right
     DatabaseNode left;
@@ -19,19 +19,94 @@ public class DatabaseNode {
     //constructor
     public DatabaseNode(int idNum){
         this.idNum = idNum;
-       // this.left = null;
-       // this.right = null;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.addy = addy;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+        this.email = email;
+        this.phNum = phNum;
+        this.left = null;
+        this.right = null;
     }//end constructor
 
+    //getters and setters for private data
     public int getID(){
         return idNum;
     }//end getID
 
     public void setID(int newID) {
         this.idNum = newID;
-    }//endsetID
+    }//end setID
+
+    public String getFirstName() {
+        return firstName;
+    }//end getFirstName
+
+    public void setFirstName(String newFirstName) {
+        this.firstName = newFirstName;
+    }//end setFirstName
+
+    public String getLastName() {
+        return lastName;
+    }//end getLastName
+
+    public void setLastName(String newLastName) {
+        this.lastName = newLastName;
+    }//end setLastName
+
+    public String getAddy() {
+        return addy;
+    }//end getAddy
+
+    public void setAddy(String newAddy) {
+        this.addy = newAddy;
+    }//end setAddy
+
+    public String getCity() {
+        return city;
+    }//end getCity
+
+    public void setCity(String newCity) {
+        this.city = newCity;
+    }//end setCity
+
+    public String getState() {
+        return state;
+    }//end getState
+
+    public void setState(String newState) {
+        this.state = newState;
+    }//end setState
+
+    public int getZip(){
+        return zip;
+    }//end getZip
+
+    public void setZip(int newZip) {
+        this.zip = newZip;
+    }//end setZip
+
+    public String getEmail(){
+        return email;
+    }//end getEmail
+
+    public void setEmail(String newEmail) {
+        this.email = newEmail;
+    }//end setEmail
+
+    public String getPhNum() {
+        return phNum;
+    }//end getPhNUm
+
+    public void setPhNum(String newPhNum) {
+        this.phNum = newPhNum;
+    }//end setPhNum
+
+
 
     public String toString() {
         return Integer.toString(getID());
-    }
+    }//end toString
 }//end class DatabaseNode
