@@ -28,6 +28,7 @@ public class DatabaseNode {
         this.zip = zip;
         this.email = email;
         this.phNum = phNum;
+        
         //pointing to left and right
         this.left = null;
         this.right = null;
@@ -106,7 +107,21 @@ public class DatabaseNode {
         this.phNum = newPhNum;
     }//end setPhNum
 
+    public DatabaseNode getLeftChild() {
+        return left;
+    }
 
+    public void setLeftChild(DatabaseNode left) {
+        this.left = left;
+    }
+
+    public DatabaseNode getRightChild() {
+        return right;
+    }
+
+    public void setRightChild(DatabaseNode right) {
+        this.right = right;
+    }
 
     public String toString() {
         return Integer.toString(getID());
