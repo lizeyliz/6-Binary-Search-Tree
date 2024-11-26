@@ -11,6 +11,10 @@ public class DatabaseMethods {
         this.root = null;
     }// end constructor
 
+    public DatabaseNode getRoot() {
+        return root;
+    }
+
     Scanner scanner = new Scanner(System.in);
 
     // ADD method //
@@ -186,15 +190,18 @@ public class DatabaseMethods {
             return;
         }
 
-        System.out.print("Enter order (preorder or inorder): ");
+        System.out.print("Enter order (preorder, inorder or postorder): ");
         String order = scanner.nextLine();
 
         if (order.equalsIgnoreCase("preorder")) {
             printPreorder(node);
         } else if (order.equalsIgnoreCase("inorder")) {
             printInOrder(node);
+        } else if (order.equalsIgnoreCase("postorder")) {
+            printPostOrder();
         } else {
-            System.out.println("Invalid order. Please choose either 'preorder' or 'inorder'.");
+            System.out.println("Invalid order. Please choose either "
+                + "'preorder', 'inorder' or 'postorder'.");
         }
         System.out.println();
     }
@@ -237,7 +244,7 @@ public class DatabaseMethods {
         printInOrder(node.right);
     }// end inOrder method
 
-    public void postOrder() {
+    public void printPostOrder() {
         if (root == null) {
             System.out.println("Empty Database");
         } else {
@@ -266,7 +273,7 @@ public class DatabaseMethods {
                 check = false;
             } // end outer while loop
         } // end it/else statement
-    }// end postOrder method
+    }// end PrintPostOrder method
     // end LOOKUP methods //
 
     // HELPER methods //
@@ -313,4 +320,17 @@ public class DatabaseMethods {
             }
         }
     }
-}
+
+    //prints count using recursion
+    public int countRecords(DatabaseNode node) {
+        if (node == null) {
+            return 0;//base case
+        }
+        // Traverse left subtree
+        int left = countRecords(node.left);
+        // Traverse right subtree
+        int right = countRecords(node.right);
+        int total = left + right;
+        return total + 1;
+    }//end countRecords method
+}//end class

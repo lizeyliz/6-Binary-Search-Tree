@@ -34,7 +34,8 @@ public class DatabaseTest {
                     database.lookupNode();
                     break;
                 case 5:
-                    //System.out.println("Number of records: " + DatabaseMethods.countRecords());
+                    System.out.println("Number of records: " 
+                        + database.countRecords(database.getRoot()));
                     break;
                 case 6:
                     System.out.println("Exiting...");
