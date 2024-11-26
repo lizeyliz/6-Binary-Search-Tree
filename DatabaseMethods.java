@@ -44,6 +44,23 @@ public class DatabaseMethods {
         } // end while loop
     }// end add method
 
+    //search BST using id number
+    public DatabaseNode search(int idNum, DatabaseNode root) {
+        //start at root
+        DatabaseNode current = root;
+        //traverse tree until correct number of null is found
+        while(current != null) {
+            if(idNum < current.getID()) {
+                current = current.left;
+            } else if(idNum > current.getID()) {
+                current = current.right;
+            } else if (idNum == current.getID()) {
+                return current;
+            }//end if/else
+        }//end while loop
+        return null; //if not found
+    }//end search
+
     // generate random id number for extra credit (make sure there are no multiples)
     // hard code for now
     public int generateID(){

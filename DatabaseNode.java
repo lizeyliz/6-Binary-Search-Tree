@@ -19,6 +19,7 @@ public class DatabaseNode {
     //constructor
     public DatabaseNode(int idNum){
         this.idNum = idNum;
+        //are these necessary?
         this.firstName = firstName;
         this.lastName = lastName;
         this.addy = addy;
@@ -27,6 +28,7 @@ public class DatabaseNode {
         this.zip = zip;
         this.email = email;
         this.phNum = phNum;
+        //pointing to left and right
         this.left = null;
         this.right = null;
     }//end constructor
