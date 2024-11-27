@@ -29,7 +29,7 @@ public class DatabaseTest {
                     database.deleteNode();
                     break;
                 case 3: // MODIFY method
-                    database.modifyNode();
+                    database.modifyNode(database.getRoot());
                     break;
                 case 4: // LOOKUP method
                     database.lookupNode();

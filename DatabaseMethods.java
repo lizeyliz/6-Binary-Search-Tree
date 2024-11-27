@@ -133,32 +133,34 @@ public class DatabaseMethods {
     }
 
     // MODIFY method //
-    public void modifyNode() {
+    public void modifyNode(DatabaseNode root) {
+        //initialize
+        //DatabaseNode newNode;
+        //get ID for node to modify
         System.out.print("Enter ID number of record you want to modify: ");
         int idNum = scanner.nextInt();
         scanner.nextLine(); // Consume newline
-
+        //search the tree for the node with that id number, and assign it to current
         DatabaseNode current = search(idNum, root);
-        if (current == null) {
+        if (current == null) {//if no node exists with that id number
             System.out.println("Record not found.");
             return;
-        }
+        }//end if statement
 
         //give choice of what to modify
-        System.out.println("What data would you like to modify?");
+        /*System.out.println("What data would you like to modify?");
         System.out.println("Choose one: 1) First name 2)Last name 3)Address 4)City 5)State 6)Zip code 7)email 8)Phone number");
-        int userChoice = scan.nextInt();
-
-        switch(userChoice) {
-            case 1 :
+        int userChoice = scan.nextInt();*/
+        //switch/case based on what user has chosen to modify
+            //deleting node so we can add back modified node without duplicate values
             deleteNode(root, idNum);
             System.out.println("Enter new first name");
             String newFirstName = scan.next();
             DatabaseNode newNode = new DatabaseNode(current.getID(), newFirstName, current.getLastName(), current.getAddy(), current.getCity(),
             current.getState(), current.getZip(), current.getEmail(), current.getPhNum());
             addNode(newNode);
-            break;
-        }
+
+        //add node that was created in the switch/case
 
         /*System.out.print("Enter new ID number: ");
         int newID = scanner.nextInt();
@@ -221,7 +223,7 @@ public class DatabaseMethods {
         while (!preorder.isEmpty()) {
             // remove current node from stack (so no repeats) and print it
             DatabaseNode current = preorder.pop();
-            System.out.print(current.getID() + " ");
+            System.out.print(current.toString() + " ");
             // do right subtree first (bc stacks are read opposite way they are added to)
             if (current.right != null) {
                 preorder.push(current.right); // adding right side values to stack

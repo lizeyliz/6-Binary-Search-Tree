@@ -125,6 +125,6 @@ public class DatabaseNode {
     @Override
     public String toString() {
         //fix this
-        return Integer.toString(getID()) + "\n" + getFirstName() + getLastName();
+        return "ID #" + Integer.toString(getID()) + "\n Name: " + getFirstName() + " " + getLastName();
     }//end toString
 }//end class DatabaseNode
