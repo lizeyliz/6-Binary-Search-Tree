@@ -6,8 +6,7 @@ public class DatabaseMethods {
 
     DatabaseNode root; // top of tree
     ArrayList<Integer> listIDs = new ArrayList<>(); // stores all IDs
-    //initialize scanner
-    Scanner scan = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
 
     public DatabaseMethods() {
         this.root = null;
@@ -16,14 +15,10 @@ public class DatabaseMethods {
     public DatabaseNode getRoot() {
         return root;
     }
-
-    Scanner scanner = new Scanner(System.in);
+    
 
     // ADD method //
     public void addNode(DatabaseNode newNode) {
-        //System.out.print("Enter ID number: ");
-        //int idNum = scanner.nextInt();
-        //DatabaseNode newNode = new DatabaseNode(idNum);
 
         // if tree is empty
         if (root == null) {
@@ -38,66 +33,52 @@ public class DatabaseMethods {
         // while loop for placement if tree is not empty
         while (true) { 
             parent = current;// loops until break is called
+
             if (newNode.getID() < current.getID()) {
                 current = current.getLeftChild();
                 if (current == null) {
                     parent.setLeftChild(newNode);
                     break;
-                } else {
+                } else if (newNode.getID() > current.getID()) {
                     current = current.getRightChild();
                     if (current == null) {
                         parent.setRightChild(newNode);
-                        break;
-                    }  // end inner if/else 2
-                } // end inner if/else 1
-
-                /*if (current.left == null) {
-                    current.left = newNode; // insert to the left
-                    break;
-                } else {
-                    current = current.left; // move to next node to the left
-                } // end inner if/else 1 */
-            } else if (newNode.getID() > current.getID()) {
-                if (current.right == null) {
-                    current.right = newNode; // insert to the right
-                    break;
-                } else {
-                    current = current.right; // move to next node to the right
-                } // end inner if/else 2
-            } else { // if newNode is equal to current
+                        break;                   
+                    } // end inner if statement
+                } else { // if newNode is equal to current
                 System.out.println("Node is a duplicate and cannot be placed.");
                 break;
-            } // end outer if/else
+            } // end else statement
+        } // end of if statement
         } // end while loop
-        System.out.println("Record added successfully.");
-        System.out.println("Your ID number is: " + newNode.getID());
-    }// end of ADD method
+    } // end addNode method
 
      //create a new node from user input
      public DatabaseNode createNode() {
         int idNum = generateID();
 
         System.out.println("Enter first name:");
-        String firstName = scan.next();
+        String firstName = scanner.next();
         System.out.println("Enter last name:");
-        String lastName = scan.next();
+        String lastName = scanner.next();
         System.out.println("Enter address:");
-        scan.nextLine();
-        String addy = scan.nextLine();
+        scanner.nextLine();
+        String addy = scanner.nextLine();
         System.out.println("Enter city:");
-        String city = scan.nextLine();
+        String city = scanner.nextLine();
         System.out.println("Enter state:");
-        String state = scan.nextLine();
+        String state = scanner.nextLine();
         System.out.println("Enter zipcode:");
-        int zip = scan.nextInt();
+        int zip = scanner.nextInt();
         System.out.println("Enter email:");
-        String email = scan.next();
+        String email = scanner.next();
         System.out.println("Enter phone number:");
-        String phNum = scan.next();
+        String phNum = scanner.next();
 
         DatabaseNode newNode = new DatabaseNode(idNum, firstName, lastName, addy, city, state, zip, email, phNum);
         //test code
-        System.out.println("ID number is " + idNum);
+        System.out.println("Record added successfully.");
+        System.out.println("Your ID number is: " + newNode.getID()); 
         return newNode;
     }
 
@@ -197,7 +178,7 @@ public class DatabaseMethods {
         //give choice of what to modify
         System.out.println("What data would you like to modify?");
         System.out.println("Choose one: 1) First name 2)Last name 3)Address 4)City 5)State 6)Zip code 7)email 8)Phone number");
-        int userChoice = scan.nextInt();
+        int userChoice = scanner.nextInt();
         scanner.nextLine(); // Consume newline    
         System.out.print("Enter new value: ");
         String newValue = scanner.nextLine();
@@ -263,9 +244,9 @@ public class DatabaseMethods {
         String order = scanner.nextLine();
 
         if (order.equalsIgnoreCase("preorder")) {
-            printPreorder(node);
+            printPreorder(root);
         } else if (order.equalsIgnoreCase("inorder")) {
-            printInOrder(node);
+            printInOrder(root);
         } else if (order.equalsIgnoreCase("postorder")) {
             printPostOrder();
         } else {
@@ -306,7 +287,7 @@ public class DatabaseMethods {
 
 
 
-// INORDER TRAVERSAL //
+// IN ORDER TRAVERSAL //
     public void printInOrder(DatabaseNode node) { // INORDER TRAVERSAL
         if (node == null)
             return;
@@ -315,7 +296,7 @@ public class DatabaseMethods {
         printInOrder(node.getLeftChild());
 
         //Print the current node's toString
-        System.out.print(node.toString() + " ");
+        System.out.print(node.toString());
 
         // right tree
         printInOrder(node.getRightChild());

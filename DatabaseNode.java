@@ -124,8 +124,8 @@ public class DatabaseNode {
 
     @Override
     public String toString() {
-        return "\nID #" + Integer.toString(getID()) + "\n Name: " + getFirstName() + " " + getLastName()
-        + "\n Address: " + getAddy() + " " + getCity() + ", " + getState() + " " + Integer.toString(getZip()) 
-        + "\n Email: " + getEmail() + "\t Phone Number: " + getPhNum();
+        return "\nID #" + idNum + "\n Name: " + firstName + " " + lastName
+                + "\n Address: " + addy + " " + city + ", " + state + " " + zip
+                + "\n Email: " + email + "\t Phone Number: " + phNum;
     }//end toString
 }//end class DatabaseNode
