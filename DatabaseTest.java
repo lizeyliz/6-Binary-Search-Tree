@@ -22,7 +22,8 @@ public class DatabaseTest {
 
             switch (choice) {
                 case 1:  // ADD method
-                    database.addNode();
+                    DatabaseNode newNode = database.createNode();
+                    database.addNode(newNode);
                     break;
                 case 2: // DELETE method
                     database.deleteNode();

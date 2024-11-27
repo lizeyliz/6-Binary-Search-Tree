@@ -6,6 +6,8 @@ public class DatabaseMethods {
 
     DatabaseNode root; // top of tree
     ArrayList<Integer> listIDs = new ArrayList<>(); // stores all IDs
+    //initialize scanner
+    Scanner scan = new Scanner(System.in);
 
     public DatabaseMethods() {
         this.root = null;
@@ -18,10 +20,10 @@ public class DatabaseMethods {
     Scanner scanner = new Scanner(System.in);
 
     // ADD method //
-    public void addNode() {
-        System.out.print("Enter ID number: ");
-        int idNum = scanner.nextInt();
-        DatabaseNode newNode = new DatabaseNode(idNum);
+    public void addNode(DatabaseNode newNode) {
+        //System.out.print("Enter ID number: ");
+        //int idNum = scanner.nextInt();
+        //DatabaseNode newNode = new DatabaseNode(idNum);
 
         // if tree is empty
         if (root == null) {
@@ -48,7 +50,6 @@ public class DatabaseMethods {
                     current = current.right; // move to next node to the right
                 } // end inner if/else 2
             } else { // if newNode is equal to current
-                // add exception handling here
                 System.out.println("Node is a duplicate and cannot be placed.");
                 break;
             } // end outer if/else
@@ -87,25 +88,6 @@ public class DatabaseMethods {
         }
         return idNum;
     }// end generateID method
-
-    // pre-order recursive from geeksforgeeks
-    // https://www.geeksforgeeks.org/binary-search-tree-traversal-inorder-preorder-post-order/
-    // use stack for iterative version?
-    /*
-     * public static void printPreorder(DatabaseNode node) {
-     * if (node == null)
-     * return;//base case
-     * 
-     * // Visit node
-     * System.out.print(node.getID() + " ");
-     * 
-     * // Traverse left subtree
-     * printPreorder(node.left);
-     * 
-     * // Traverse right subtree
-     * printPreorder(node.right);
-     * }
-     */
 
     // DELETE method //
     public void deleteNode() {
@@ -172,7 +154,10 @@ public class DatabaseMethods {
 
         // Temporarily remove the node and reinsert it with the new ID
         root = deleteNode(root, idNum); // Remove the current node
-        addNodeWithID(newID); // Add a new node with the updated ID
+        DatabaseNode newNode = new DatabaseNode(newID, current.getFirstName(), current.getLastName(), current.getAddy(), current.getCity(),
+        current.getState(), current.getZip(), current.getEmail(), current.getPhNum());
+        addNode(newNode);
+        //addNodeWithID(newID); // Add a new node with the updated ID
         System.out.println("Record modified successfully.");
 
     }
@@ -295,7 +280,7 @@ public class DatabaseMethods {
         }
     }
 
-    private void addNodeWithID(int idNum) {
+    /*private void addNodeWithID(int idNum) {
         DatabaseNode newNode = new DatabaseNode(idNum);
 
         if (root == null) {
@@ -319,6 +304,34 @@ public class DatabaseMethods {
                 current = current.right;
             }
         }
+    }*/
+
+    //create a new node from user input
+    public DatabaseNode createNode() {
+        int idNum = generateID();
+
+        System.out.println("Enter first name:");
+        String firstName = scan.next();
+        System.out.println("Enter last name:");
+        String lastName = scan.next();
+        System.out.println("Enter address:");
+        scan.nextLine();
+        String addy = scan.nextLine();
+        System.out.println("Enter city:");
+        String city = scan.nextLine();
+        System.out.println("Enter state:");
+        String state = scan.nextLine();
+        System.out.println("Enter zipcode:");
+        int zip = scan.nextInt();
+        System.out.println("Enter email:");
+        String email = scan.next();
+        System.out.println("Enter phone number:");
+        String phNum = scan.next();
+
+        DatabaseNode newNode = new DatabaseNode(idNum, firstName, lastName, addy, city, state, zip, email, phNum);
+        //test code
+        System.out.println("ID number is " + idNum);
+        return newNode;
     }
 
     //prints count using recursion

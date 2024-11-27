@@ -17,9 +17,8 @@ public class DatabaseNode {
     DatabaseNode right;
     
     //constructor
-    public DatabaseNode(int idNum){
+    public DatabaseNode(int idNum, String firstName, String lastName, String addy, String city, String state, int zip, String email, String phNum){
         this.idNum = idNum;
-        //are these necessary?
         this.firstName = firstName;
         this.lastName = lastName;
         this.addy = addy;
@@ -123,7 +122,9 @@ public class DatabaseNode {
         this.right = right;
     }
 
+    @Override
     public String toString() {
-        return Integer.toString(getID());
+        //fix this
+        return Integer.toString(getID()) + "\n" + firstName;
     }//end toString
 }//end class DatabaseNode
