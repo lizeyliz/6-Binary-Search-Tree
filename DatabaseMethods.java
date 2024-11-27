@@ -143,21 +143,37 @@ public class DatabaseMethods {
             return;
         }
 
-        System.out.print("Enter new ID number: ");
-        int newID = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
+        //give choice of what to modify
+        System.out.println("What data would you like to modify?");
+        System.out.println("Choose one: 1) First name 2)Last name 3)Address 4)City 5)State 6)Zip code 7)email 8)Phone number");
+        int userChoice = scan.nextInt();
 
-        if (search(newID, root) != null) {
-            System.out.println("New ID already exists. Modification failed.");
-            return;
+        switch(userChoice) {
+            case 1 :
+            deleteNode(root, idNum);
+            System.out.println("Enter new first name");
+            String newFirstName = scan.next();
+            DatabaseNode newNode = new DatabaseNode(current.getID(), newFirstName, current.getLastName(), current.getAddy(), current.getCity(),
+            current.getState(), current.getZip(), current.getEmail(), current.getPhNum());
+            addNode(newNode);
+            break;
         }
 
+        /*System.out.print("Enter new ID number: ");
+        int newID = scanner.nextInt();
+        scanner.nextLine(); // Consume newline*/
+
+        /*if (search(newID, root) != null) {
+            System.out.println("New ID already exists. Modification failed.");
+            return;
+        }*/
+
         // Temporarily remove the node and reinsert it with the new ID
-        root = deleteNode(root, idNum); // Remove the current node
+        /*root = deleteNode(root, idNum); // Remove the current node
         DatabaseNode newNode = new DatabaseNode(newID, current.getFirstName(), current.getLastName(), current.getAddy(), current.getCity(),
         current.getState(), current.getZip(), current.getEmail(), current.getPhNum());
         addNode(newNode);
-        //addNodeWithID(newID); // Add a new node with the updated ID
+        //addNodeWithID(newID); // Add a new node with the updated ID*/
         System.out.println("Record modified successfully.");
 
     }
