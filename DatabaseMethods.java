@@ -55,6 +55,7 @@ public class DatabaseMethods {
             } // end outer if/else
         } // end while loop
         System.out.println("Record added successfully.");
+        System.out.println("Your ID number is: " + newNode.getID());
     }// end of ADD method
 
     // search BST using id number
