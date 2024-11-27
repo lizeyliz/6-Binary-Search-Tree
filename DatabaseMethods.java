@@ -33,15 +33,30 @@ public class DatabaseMethods {
 
         // starting from the top
         DatabaseNode current = root;
+        DatabaseNode parent = null;
+
         // while loop for placement if tree is not empty
-        while (true) { // loops until break is called
+        while (true) { 
+            parent = current;// loops until break is called
             if (newNode.getID() < current.getID()) {
-                if (current.left == null) {
+                current = current.getLeftChild();
+                if (current == null) {
+                    parent.setLeftChild(newNode);
+                    break;
+                } else {
+                    current = current.getRightChild();
+                    if (current == null) {
+                        parent.setRightChild(newNode);
+                        break;
+                    }  // end inner if/else 2
+                } // end inner if/else 1
+
+                /*if (current.left == null) {
                     current.left = newNode; // insert to the left
                     break;
                 } else {
                     current = current.left; // move to next node to the left
-                } // end inner if/else 1
+                } // end inner if/else 1 */
             } else if (newNode.getID() > current.getID()) {
                 if (current.right == null) {
                     current.right = newNode; // insert to the right
@@ -57,6 +72,34 @@ public class DatabaseMethods {
         System.out.println("Record added successfully.");
         System.out.println("Your ID number is: " + newNode.getID());
     }// end of ADD method
+
+     //create a new node from user input
+     public DatabaseNode createNode() {
+        int idNum = generateID();
+
+        System.out.println("Enter first name:");
+        String firstName = scan.next();
+        System.out.println("Enter last name:");
+        String lastName = scan.next();
+        System.out.println("Enter address:");
+        scan.nextLine();
+        String addy = scan.nextLine();
+        System.out.println("Enter city:");
+        String city = scan.nextLine();
+        System.out.println("Enter state:");
+        String state = scan.nextLine();
+        System.out.println("Enter zipcode:");
+        int zip = scan.nextInt();
+        System.out.println("Enter email:");
+        String email = scan.next();
+        System.out.println("Enter phone number:");
+        String phNum = scan.next();
+
+        DatabaseNode newNode = new DatabaseNode(idNum, firstName, lastName, addy, city, state, zip, email, phNum);
+        //test code
+        System.out.println("ID number is " + idNum);
+        return newNode;
+    }
 
     // search BST using id number
     /*
@@ -137,54 +180,72 @@ public class DatabaseMethods {
     // end DELETE method //
 
     // MODIFY method //
-    public void modifyNode(DatabaseNode root) {
-        //initialize
-        //DatabaseNode newNode;
+    public void modifyNode() {
+     
         //get ID for node to modify
         System.out.print("Enter ID number of record you want to modify: ");
         int idNum = scanner.nextInt();
         scanner.nextLine(); // Consume newline
+        DatabaseNode node = search(idNum, root);
+
         //search the tree for the node with that id number, and assign it to current
-        DatabaseNode current = search(idNum, root);
-        if (current == null) {//if no node exists with that id number
+        if (node == null) {//if no node exists with that id number
             System.out.println("Record not found.");
             return;
         }//end if statement
 
         //give choice of what to modify
-        /*System.out.println("What data would you like to modify?");
+        System.out.println("What data would you like to modify?");
         System.out.println("Choose one: 1) First name 2)Last name 3)Address 4)City 5)State 6)Zip code 7)email 8)Phone number");
-        int userChoice = scan.nextInt();*/
-        //switch/case based on what user has chosen to modify
-            //deleting node so we can add back modified node without duplicate values
-            delete(root, idNum);
-            System.out.println("Enter new first name");
-            String newFirstName = scan.next();
-            DatabaseNode newNode = new DatabaseNode(current.getID(), newFirstName, current.getLastName(), current.getAddy(), current.getCity(),
+        int userChoice = scan.nextInt();
+        scanner.nextLine(); // Consume newline    
+        System.out.print("Enter new value: ");
+        String newValue = scanner.nextLine();
+        scanner.nextLine(); // Consume newline
+
+        switch (userChoice) {
+            case 1: 
+                node.setFirstName(newValue);
+                break;
+            case 2:
+                node.setLastName(newValue);
+                break;
+            case 3:
+                node.setAddy(newValue);
+                break;
+            case 4:
+                node.setCity(newValue);
+                break;
+            case 5:
+                node.setState(newValue);
+                break;
+            case 6:
+                node.setZip(Integer.parseInt(newValue));
+                break;
+            case 7:
+                node.setEmail(newValue);
+                break;
+            case 8:
+                node.setPhNum(newValue);
+                break;
+            default:
+                System.out.println("Invalid choice.");
+        }
+        System.out.println("Record modified successfully.");
+            
+            //add node that was created in the switch/case
+            /*if (search(newID, root) != null) {
+                System.out.println("New ID already exists. Modification failed.");
+                return;
+            }*/
+            // Temporarily remove the node and reinsert it with the new ID
+            /*root = deleteNode(root, idNum); // Remove the current node
+            DatabaseNode newNode = new DatabaseNode(newID, current.getFirstName(), current.getLastName(), current.getAddy(), current.getCity(),
             current.getState(), current.getZip(), current.getEmail(), current.getPhNum());
             addNode(newNode);
-
-        //add node that was created in the switch/case
-
-        /*System.out.print("Enter new ID number: ");
-        int newID = scanner.nextInt();
-        scanner.nextLine(); // Consume newline*/
-
-        /*if (search(newID, root) != null) {
-            System.out.println("New ID already exists. Modification failed.");
-            return;
-        }*/
-
-        // Temporarily remove the node and reinsert it with the new ID
-        /*root = deleteNode(root, idNum); // Remove the current node
-        DatabaseNode newNode = new DatabaseNode(newID, current.getFirstName(), current.getLastName(), current.getAddy(), current.getCity(),
-        current.getState(), current.getZip(), current.getEmail(), current.getPhNum());
-        addNode(newNode);
-        //addNodeWithID(newID); // Add a new node with the updated ID*/
-        System.out.println("Record modified successfully.");
-
-    }
-    // end MODIFY method //
+            //addNodeWithID(newID); // Add a new node with the updated ID*/
+           
+    }  // end MODIFY method //
 
     // LOOKUP method
     public void lookupNode() {
@@ -214,12 +275,14 @@ public class DatabaseMethods {
         System.out.println();
     }
 
-    // print pre-order using iteration and stack
+    // print PREORDER TRAVERSAL using Iteration//
     public void printPreorder(DatabaseNode root) {
+
         if (root == null) { // BST empty
             return;
         } // end if
-          // creating a stack to hold tree values
+        
+        // creating a stack to hold tree values
         Stack<DatabaseNode> preorder = new Stack<>();
         // put the root in the stack
         preorder.push(root);
@@ -228,30 +291,37 @@ public class DatabaseMethods {
             // remove current node from stack (so no repeats) and print it
             DatabaseNode current = preorder.pop();
             System.out.print(current.toString() + " ");
+            
             // do right subtree first (bc stacks are read opposite way they are added to)
-            if (current.right != null) {
-                preorder.push(current.right); // adding right side values to stack
+            if (current.getRightChild() != null) {
+                preorder.push(current.getRightChild()); // adding right side values to stack
             } // end if statement
 
             // left subtree
-            if (current.left != null) {
-                preorder.push(current.left);// adding left side values to stack
+            if (current.getLeftChild() != null) {
+                preorder.push(current.getLeftChild());// adding left side values to stack
             } // end if statement
         } // end while loop
     }// end printPreorder method
 
+
+
+// INORDER TRAVERSAL //
     public void printInOrder(DatabaseNode node) { // INORDER TRAVERSAL
         if (node == null)
             return;
 
         // left tree
-        printInOrder(node.left);
-        System.out.print(node.getID() + " ");
+        printInOrder(node.getLeftChild());
+
+        //Print the current node's toString
+        System.out.print(node.toString() + " ");
 
         // right tree
-        printInOrder(node.right);
-    }// end inOrder method
+        printInOrder(node.getRightChild());
+    }// end INORDER TRAVERSAL
 
+// POST-ORDER TRAVERSAL //
     public void printPostOrder() {
         if (root == null) {
             System.out.println("Empty Database");
@@ -277,7 +347,8 @@ public class DatabaseMethods {
                 }
                 // if not caught in any above special case
                 current = stack.pop();
-                System.out.print(current.getID() + " ");
+                System.out.print(current.toString() + " ");
+                //System.out.print(current.getID() + " ");
                 check = false;
             } // end outer while loop
         } // end it/else statement
@@ -329,33 +400,7 @@ public class DatabaseMethods {
         }
     }*/
 
-    //create a new node from user input
-    public DatabaseNode createNode() {
-        int idNum = generateID();
-
-        System.out.println("Enter first name:");
-        String firstName = scan.next();
-        System.out.println("Enter last name:");
-        String lastName = scan.next();
-        System.out.println("Enter address:");
-        scan.nextLine();
-        String addy = scan.nextLine();
-        System.out.println("Enter city:");
-        String city = scan.nextLine();
-        System.out.println("Enter state:");
-        String state = scan.nextLine();
-        System.out.println("Enter zipcode:");
-        int zip = scan.nextInt();
-        System.out.println("Enter email:");
-        String email = scan.next();
-        System.out.println("Enter phone number:");
-        String phNum = scan.next();
-
-        DatabaseNode newNode = new DatabaseNode(idNum, firstName, lastName, addy, city, state, zip, email, phNum);
-        //test code
-        System.out.println("ID number is " + idNum);
-        return newNode;
-    }
+   
 
     //prints count using recursion
     public int countRecords(DatabaseNode node) {
