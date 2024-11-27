@@ -96,21 +96,22 @@ public class DatabaseMethods {
         int idNum = scanner.nextInt();
         scanner.nextLine(); // Consume newline
 
-        root = deleteNode(root, idNum);
+        root = delete(root, idNum);
         System.out.println("Record deleted successfully.");
     }
-
-    private DatabaseNode deleteNode(DatabaseNode root, int idNum) {
-        // Base case: if the tree is empty
+ 
+    private DatabaseNode delete(DatabaseNode root, int idNum) {
+    
+       // Base case: if the tree is empty
         if (root == null) {
             return null;
         }
 
         // Traverse the tree to find the node to delete
         if (idNum < root.getID()) {
-            root.left = deleteNode(root.left, idNum);
+            root.left = delete(root.left, idNum);
         } else if (idNum > root.getID()) {
-            root.right = deleteNode(root.right, idNum);
+            root.right = delete(root.right, idNum);
         } else {
             // Found the node to delete
             // Case 1: No child (leaf node)
@@ -126,11 +127,14 @@ public class DatabaseMethods {
             // Case 3: Two children
             DatabaseNode successor = findMin(root.right);
             root.setID(successor.getID()); // Replace the value
-            root.right = deleteNode(root.right, successor.getID()); // Remove successor
+            root.right = delete(root.right, successor.getID()); // Remove successor
         }
+           root = delete(root, idNum);
+       System.out.println("Record deleted successfully.");
 
         return root;
     }
+    // end DELETE method //
 
     // MODIFY method //
     public void modifyNode(DatabaseNode root) {
@@ -153,7 +157,7 @@ public class DatabaseMethods {
         int userChoice = scan.nextInt();*/
         //switch/case based on what user has chosen to modify
             //deleting node so we can add back modified node without duplicate values
-            deleteNode(root, idNum);
+            delete(root, idNum);
             System.out.println("Enter new first name");
             String newFirstName = scan.next();
             DatabaseNode newNode = new DatabaseNode(current.getID(), newFirstName, current.getLastName(), current.getAddy(), current.getCity(),
