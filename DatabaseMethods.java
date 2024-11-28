@@ -18,6 +18,30 @@ public class DatabaseMethods {
     
 
     // ADD method //
+    public DatabaseNode createNode() {
+        int idNum = generateID();
+
+        System.out.println("Enter first name:");
+        String firstName = scanner.next();
+        System.out.println("Enter last name:");
+        String lastName = scanner.next();
+        System.out.println("Enter address:");
+        scanner.nextLine();
+        String addy = scanner.nextLine();
+        System.out.println("Enter city:");
+        String city = scanner.nextLine();
+        System.out.println("Enter state:");
+        String state = scanner.nextLine();
+        System.out.println("Enter zipcode:");
+        int zip = scanner.nextInt();
+        System.out.println("Enter email:");
+        String email = scanner.next();
+        System.out.println("Enter phone number:");
+        String phNum = scanner.next();
+
+        return new DatabaseNode (idNum, firstName, lastName, addy, city, state, zip, email, phNum);
+        }// end createNode method
+
     public void addNode(DatabaseNode newNode) {
 
         // if tree is empty
@@ -28,7 +52,7 @@ public class DatabaseMethods {
 
         // starting from the top
         DatabaseNode current = root;
-        DatabaseNode parent = null;
+        DatabaseNode parent;
 
         // while loop for placement if tree is not empty
         while (true) { 
@@ -51,36 +75,16 @@ public class DatabaseMethods {
             } // end else statement
         } // end of if statement
         } // end while loop
-    } // end addNode method
-
-     //create a new node from user input
-     public DatabaseNode createNode() {
-        int idNum = generateID();
-
-        System.out.println("Enter first name:");
-        String firstName = scanner.next();
-        System.out.println("Enter last name:");
-        String lastName = scanner.next();
-        System.out.println("Enter address:");
-        scanner.nextLine();
-        String addy = scanner.nextLine();
-        System.out.println("Enter city:");
-        String city = scanner.nextLine();
-        System.out.println("Enter state:");
-        String state = scanner.nextLine();
-        System.out.println("Enter zipcode:");
-        int zip = scanner.nextInt();
-        System.out.println("Enter email:");
-        String email = scanner.next();
-        System.out.println("Enter phone number:");
-        String phNum = scanner.next();
-
-        DatabaseNode newNode = new DatabaseNode(idNum, firstName, lastName, addy, city, state, zip, email, phNum);
-        //test code
         System.out.println("Record added successfully.");
         System.out.println("Your ID number is: " + newNode.getID()); 
-        return newNode;
+    } // end addNode method
+
+    // Main Method: Combines node creation and insertion
+    public void addNode() {
+        DatabaseNode newNode = createNode(); // Get user input to create a new node
+        addNode(newNode); // Insert the new node into the tree
     }
+
 
     // search BST using id number
     /*
@@ -101,18 +105,7 @@ public class DatabaseMethods {
      * }// end search
      */
 
-    // generate random id number for extra credit (make sure there are no multiples)
-    // hard code for now
-    public int generateID() {
-        int idNum = 0;
-        // generate random number
-        idNum = (int) (Math.random() * 1000000000);
-        // check that idNum is unique
-        while (listIDs.contains(idNum)) {
-            idNum = (int) (Math.random() * 1000000000);
-        }
-        return idNum;
-    }// end generateID method
+
 
     // DELETE method //
     public void deleteNode() {
@@ -120,10 +113,17 @@ public class DatabaseMethods {
         int idNum = scanner.nextInt();
         scanner.nextLine(); // Consume newline
 
+          // Check if the node exists before attempting deletion
+        if (search(idNum, root) == null) {
+        System.out.println("Record with ID " + idNum + " not found.");
+        return;
+        }
+
         root = delete(root, idNum);
         System.out.println("Record deleted successfully.");
     }
  
+    //Recursive delete helper method
     private DatabaseNode delete(DatabaseNode root, int idNum) {
     
        // Base case: if the tree is empty
@@ -152,9 +152,10 @@ public class DatabaseMethods {
             DatabaseNode successor = findMin(root.right);
             root.setID(successor.getID()); // Replace the value
             root.right = delete(root.right, successor.getID()); // Remove successor
+            //System.out.println("Record deleted successfully.");
         }
-           root = delete(root, idNum);
-       System.out.println("Record deleted successfully.");
+           //root = delete(root, idNum);
+       //System.out.println("Record deleted successfully.");
 
         return root;
     }
@@ -381,7 +382,18 @@ public class DatabaseMethods {
         }
     }*/
 
-   
+       // generate random id number for extra credit (make sure there are no multiples)
+    // hard code for now
+    public int generateID() {
+        int idNum = 0;
+        // generate random number
+        idNum = (int) (Math.random() * 1000000000);
+        // check that idNum is unique
+        while (listIDs.contains(idNum)) {
+            idNum = (int) (Math.random() * 1000000000);
+        }
+        return idNum;
+    }// end generateID metho
 
     //prints count using recursion
     public int countRecords(DatabaseNode node) {
