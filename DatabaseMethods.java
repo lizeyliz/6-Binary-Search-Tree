@@ -38,75 +38,55 @@ public class DatabaseMethods {
         String email = scanner.next();
         System.out.println("Enter phone number:");
         String phNum = scanner.next();
+        scanner.nextLine();
 
         return new DatabaseNode (idNum, firstName, lastName, addy, city, state, zip, email, phNum);
     }// end createNode method
     
-    //add a node to the tree
     public void addNode(DatabaseNode newNode) {
-
         // if tree is empty
         if (root == null) {
             root = newNode;
+            System.out.println("Record added successfully.");
+            System.out.println("Your ID number is: " + newNode.getID());
             return; // end method here if root == null
-        } // end if statement
-
+        }
+    
         // starting from the top
         DatabaseNode current = root;
-        DatabaseNode parent;
-
+        DatabaseNode parent = null;
+    
         // while loop for placement if tree is not empty
-        while (true) { 
-            parent = current;// loops until break is called
-
+        while (current != null) {
+            parent = current;
             if (newNode.getID() < current.getID()) {
-                current = current.getLeftChild();
-                if (current == null) {
-                    parent.setLeftChild(newNode);
-                    break;
-                } else if (newNode.getID() > current.getID()) {
-                    current = current.getRightChild();
-                    if (current == null) {
-                        parent.setRightChild(newNode);
-                        break;                   
-                    } // end inner if statement
-                } else { // if newNode is equal to current
+                current = current.getLeftChild(); // Move left
+            } else if (newNode.getID() > current.getID()) {
+                current = current.getRightChild(); // Move right
+            } else {
+                // Duplicate node found
                 System.out.println("Node is a duplicate and cannot be placed.");
-                break;
-            } // end else statement
-        } // end of if statement
-        } // end while loop
-    } // end addNode method
-
+                return; // Exit the method if it's a duplicate
+            }
+        }
+    
+        // Insert the new node in the correct position
+        if (newNode.getID() < parent.getID()) {
+            parent.setLeftChild(newNode); // Set as left child
+        } else {
+            parent.setRightChild(newNode); // Set as right child
+        }
+    
+        // Success message
+        System.out.println("Record added successfully.");
+        System.out.println("Your ID number is: " + newNode.getID());
+    }
+    
     // Main Method: Combines node creation and insertion
     public void addNode() {
         DatabaseNode newNode = createNode(); // Get user input to create a new node
         addNode(newNode); // Insert the new node into the tree
-        System.out.println("Record added successfully.");
-        System.out.println("Your ID number is: " + newNode.getID()); 
     }
-
-
-    // search BST using id number
-    /*
-     * public DatabaseNode search(int idNum, DatabaseNode root) {
-     * // start at root
-     * DatabaseNode current = root;
-     * // traverse tree until correct number of null is found
-     * while (current != null) {
-     * if (idNum < current.getID()) {
-     * current = current.left;
-     * } else if (idNum > current.getID()) {
-     * current = current.right;
-     * } else if (idNum == current.getID()) {
-     * return current;
-     * } // end if/else
-     * } // end while loop
-     * return null; // if not found
-     * }// end search
-     */
-
-
 
     // DELETE method //
     public void deleteNode() {
