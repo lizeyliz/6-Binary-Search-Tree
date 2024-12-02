@@ -76,14 +76,14 @@ public class DatabaseMethods {
             } // end else statement
         } // end of if statement
         } // end while loop
-        System.out.println("Record added successfully.");
-        System.out.println("Your ID number is: " + newNode.getID()); 
     } // end addNode method
 
     // Main Method: Combines node creation and insertion
     public void addNode() {
         DatabaseNode newNode = createNode(); // Get user input to create a new node
         addNode(newNode); // Insert the new node into the tree
+        System.out.println("Record added successfully.");
+        System.out.println("Your ID number is: " + newNode.getID()); 
     }
 
 

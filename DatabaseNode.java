@@ -126,6 +126,6 @@ public class DatabaseNode {
     public String toString() {
         return "\nID #" + idNum + "\n Name: " + firstName + " " + lastName
                 + "\n Address: " + addy + " " + city + ", " + state + " " + zip
-                + "\n Email: " + email + "\t Phone Number: " + phNum;
+                + "\n Email: " + email + "\t Phone Number: " + phNum + "\n";
     }//end toString
 }//end class DatabaseNode
