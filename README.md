@@ -4,12 +4,8 @@ This program creates an address book of people and their contact information tha
 
 Possible extra credit
 ## Extra Credit
-- writen as a generic (like E) - then maybe use extends?
 - use iteration (recursion is standard)
 - All data private
-- GUI programming.
-Huffman coding tree (recursion)
-
 
 ## Reference Sites
 - [Geeks For Geeks "Binary Search Tree Traversals"](https://www.geeksforgeeks.org/binary-search-tree-traversal-inorder-preorder-post-order/)
