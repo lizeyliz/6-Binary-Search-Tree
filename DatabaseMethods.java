@@ -194,20 +194,7 @@ public class DatabaseMethods {
             default:
                 System.out.println("Invalid choice.");
         }
-        System.out.println("Record modified successfully.");
-            
-            //add node that was created in the switch/case
-            /*if (search(newID, root) != null) {
-                System.out.println("New ID already exists. Modification failed.");
-                return;
-            }*/
-            // Temporarily remove the node and reinsert it with the new ID
-            /*root = deleteNode(root, idNum); // Remove the current node
-            DatabaseNode newNode = new DatabaseNode(newID, current.getFirstName(), current.getLastName(), current.getAddy(), current.getCity(),
-            current.getState(), current.getZip(), current.getEmail(), current.getPhNum());
-            addNode(newNode);
-            //addNodeWithID(newID); // Add a new node with the updated ID*/
-           
+        System.out.println("Record modified successfully.");      
     }  // end MODIFY method //
 
     // LOOKUP method
