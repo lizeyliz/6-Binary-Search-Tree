@@ -355,36 +355,9 @@ public class DatabaseMethods {
         } else {
             return search(idNum, node.right);
         }
-    }
+    }//end search
 
-    /*private void addNodeWithID(int idNum) {
-        DatabaseNode newNode = new DatabaseNode(idNum);
-
-        if (root == null) {
-            root = newNode;
-            return;
-        }
-
-        DatabaseNode current = root;
-        while (true) {
-            if (idNum < current.getID()) {
-                if (current.left == null) {
-                    current.left = newNode;
-                    break;
-                }
-                current = current.left;
-            } else {
-                if (current.right == null) {
-                    current.right = newNode;
-                    break;
-                }
-                current = current.right;
-            }
-        }
-    }*/
-
-       // generate random id number for extra credit (make sure there are no multiples)
-    // hard code for now
+    //generate random ID number
     public int generateID() {
         int idNum = 0;
         // generate random number
