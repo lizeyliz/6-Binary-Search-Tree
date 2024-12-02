@@ -34,7 +34,7 @@ public class DatabaseNode {
     }//end constructor
 
     //getters and setters for private data
-    public int getID(){
+    public int getID() {
         return idNum;
     }//end getID
 

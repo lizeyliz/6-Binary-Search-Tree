@@ -14,10 +14,10 @@ public class DatabaseMethods {
 
     public DatabaseNode getRoot() {
         return root;
-    }
+    }//end getRoot
     
 
-    // ADD method //
+    //create a node from user input
     public DatabaseNode createNode() {
         int idNum = generateID();
 
@@ -40,8 +40,9 @@ public class DatabaseMethods {
         String phNum = scanner.next();
 
         return new DatabaseNode (idNum, firstName, lastName, addy, city, state, zip, email, phNum);
-        }// end createNode method
-
+    }// end createNode method
+    
+    //add a node to the tree
     public void addNode(DatabaseNode newNode) {
 
         // if tree is empty

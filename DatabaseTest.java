@@ -6,7 +6,7 @@ public class DatabaseTest {
         DatabaseMethods database = new DatabaseMethods();
       
         Scanner scanner = new Scanner(System.in);
-
+        //user menu
         while (true) {
             System.out.println("Menu:");
             System.out.println("1. Add");
@@ -45,29 +45,5 @@ public class DatabaseTest {
                     System.out.println("Invalid choice. Please try again.");
             } // end Switch/Case
         } // end While loop 
-
-        //hardcoding in adds
-        /*DatabaseNode node1 = new DatabaseNode(50);
-        DatabaseNode node2 = new DatabaseNode(25);
-        DatabaseNode node3 = new DatabaseNode(35);
-        DatabaseNode node4 = new DatabaseNode(80);
-
-        database.add(node1);
-        database.add(node2);
-        database.add(node3);
-        database.add(node4);*/
-
-        //print in preorder
-        //System.out.println("Pre-order traversal");
-        //database.printPreorder(node1);
-
-        //System.out.println();
-
-        //print in order
-        //System.out.println("In Order Traversal");
-        //database.printInOrder(node1);
-
-    } // end public
-
-    
+    } // end main
 }  // end Test Class file
